@@ -16,7 +16,7 @@ describe 'when I visit /books' do
         expect(page).to have_content(book_1.title)
         expect(page).to have_content("Pages: #{book_1.page_count}")
         expect(page).to have_content("Year: #{book_1.year}")
-        expect(page).to have_content(book_1.authors.pluck(:name).join("\n"))
+        expect(page).to have_content("#{stephen_king.name}")
 
         expect(page).to_not have_content("Year: #{book_2.year}")
         expect(page).to_not have_content("Pages: #{book_2.page_count}")
@@ -27,7 +27,7 @@ describe 'when I visit /books' do
         expect(page).to have_content(book_2.title)
         expect(page).to have_content("Pages: #{book_2.page_count}")
         expect(page).to have_content("Year: #{book_2.year}")
-        expect(page).to have_content(book_2.authors.pluck(:name).join("\n"))
+        expect(page).to have_content("#{stephen_king.name}")
       end
 
     end
@@ -48,10 +48,7 @@ describe 'when I visit /books' do
         expect(page).to have_content(book_2.title)
         expect(page).to have_content("Pages: #{book_2.page_count}")
         expect(page).to have_content("Year: #{book_2.year}")
-        expect(page).to have_content(book_2.authors.pluck(:name).join("\n"))
-
-        expect(page).to_not have_content("Year: #{book_1.year}")
-        expect(page).to_not have_content("Pages: #{book_1.page_count}")
+        expect(page).to have_content("#{stephen_king.name}\n#{herman_melville.name}")
       end
 
     end
