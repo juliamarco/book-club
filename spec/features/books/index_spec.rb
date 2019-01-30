@@ -22,6 +22,14 @@ describe 'when I visit /books' do
         expect(page).to_not have_content("Pages: #{book_2.page_count}")
       end
 
+      within "#book-#{book_2.id}" do
+
+        expect(page).to have_content(book_2.title)
+        expect(page).to have_content("Pages: #{book_2.page_count}")
+        expect(page).to have_content("Year: #{book_2.year}")
+        expect(page).to have_content(book_2.authors.pluck(:name).join("\n"))
+      end
+
     end
 
     it 'displays multiple authors if present' do
