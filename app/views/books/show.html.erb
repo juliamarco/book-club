@@ -1,6 +1,6 @@
 <h2><%= @book.title %></h2>
-<% @book.authors.pluck(:name).each do |author| %>
-  <h4><%= author %></h4>
+<% @book.authors.each do |author| %>
+  <h4><%= author.name %></h4>
 <% end %>
 <p>Pages: <%= @book.page_count %></p>
 <p>Year: <%= @book.year %></p>
