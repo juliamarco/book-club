@@ -11,7 +11,7 @@ describe 'when I visit /books/:id' do
       BookAuthor.create(author: herman_melville, book: book_1)
       BookAuthor.create(author: stephen_king, book: book_2)
 
-      visit "/books/#{book_1.id}"
+      visit book_path(book_1)
 
       expect(page).to have_content(book_1.title)
       expect(page).to have_content(book_1.authors.pluck(:name).join("\n"))
