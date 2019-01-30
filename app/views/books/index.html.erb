@@ -1,0 +1,10 @@
+<% @books.each do |book| %>
+  <section class="books_index" id="book-<%= book.id %>">
+    <h3><%= book.title %></h3>
+      <% book.authors.pluck(:name).each do |author| %>
+        <h5><%= author %></h5>
+      <% end %>
+      <p>Pages: <%= book.page_count %></p>
+      <p>Year: <%= book.year %></p>
+  </section>
+<% end %>

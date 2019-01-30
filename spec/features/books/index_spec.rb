@@ -16,10 +16,11 @@ describe 'when I visit /books' do
         expect(page).to have_content(book_1.title)
         expect(page).to have_content("Pages: #{book_1.page_count}")
         expect(page).to have_content("Year: #{book_1.year}")
-        expect(page).to have_content("Author: #{book_1.author.name}")
+        expect(page).to have_content(book_1.authors.pluck(:name).join("/n"))
 
         expect(page).to_not have_content("Year: #{book_2.year}")
         expect(page).to_not have_content("Pages: #{book_2.page_count}")
+        save_and_open_page
       end
 
     end
