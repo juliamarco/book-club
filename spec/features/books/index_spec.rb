@@ -9,7 +9,7 @@ describe 'when I visit /books' do
       BookAuthor.create(author: stephen_king, book: book_1)
       BookAuthor.create(author: stephen_king, book: book_2)
 
-      visit '/books'
+      visit books_path
 
       within "#book-#{book_1.id}" do
 
@@ -41,7 +41,7 @@ describe 'when I visit /books' do
       BookAuthor.create(author: stephen_king, book: book_2)
       BookAuthor.create(author: herman_melville, book: book_2)
 
-      visit '/books'
+      visit books_path
 
       within "#book-#{book_2.id}" do
 
