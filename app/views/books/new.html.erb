@@ -1,0 +1,19 @@
+<%= form_for @book do |f| %>
+  <%= f.label :title %>
+  <%= f.text_field :title, placeholder: "e.g: #isPeterOkay?" %><br>
+
+  <%= f.label :year %>
+  <%= f.number_field :year, placeholder: "e.g: 2019" %><br>
+
+  <%= f.label :select_author %>
+  <%= f.collection_select(:author_ids, @authors, :id, :name, {}, {multiple: true}) %>
+  <%= link_to("Add New Author!", new_author_path) %><br>
+
+  <%= f.label :page_count %>
+  <%= f.number_field :page_count, placeholder: "e.g: 1811" %><br>
+
+  <%= f.label :cover_image %>
+  <%= f.text_field :cover_image, placeholder: "e.g: 1811.com/peter.png" %><br>
+
+  <%= f.submit "Add Book" %>
+<% end %>
