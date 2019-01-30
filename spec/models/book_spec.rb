@@ -8,7 +8,7 @@ RSpec.describe Book do
   end
 
   describe 'relationships' do
-    it {should have_many :bookauthors}
+    it {should have_many :book_authors}
     it {should have_many :authors}
     xit {should have_many :reviews}
   end
