@@ -14,7 +14,7 @@ describe 'when I visit /books/:id' do
       visit book_path(book_1)
 
       expect(page).to have_content(book_1.title)
-      expect(page).to have_content(book_1.authors.pluck(:name).join("\n"))
+      expect(page).to have_content("#{stephen_king.name}\n#{herman_melville.name}")
       expect(page).to have_content(book_1.page_count)
       expect(page).to have_content(book_1.year)
       expect(page).to_not have_content(book_2.title)
