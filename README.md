@@ -1,6 +1,8 @@
 # README
 
 ![Database Schema](database_schema.png)
+
+
 To deploy the application run the following commands in the terminal:
 ``` bash
 bundle install
