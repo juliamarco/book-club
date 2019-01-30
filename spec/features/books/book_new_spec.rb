@@ -11,7 +11,8 @@ describe 'when I visit /books/new' do
       visit new_book_path
 
       fill_in "book[title]", with: "IT"
-      fill_in "book[author]", with: "#{author_1_name}, #{author_2_name}"
+      fill_in "book[authors]", with: "#{author_1_name}, #{author_2_name}"
+      select "Jim Gaffigan", from: "Author"
       fill_in "book[year]", with: "1999"
       fill_in "book[page_count]", with: "200"
 
@@ -21,8 +22,7 @@ describe 'when I visit /books/new' do
       expect(page).to have_content("#{author_1_name}, #{author_2_name}")
       expect(page).to have_content("Year: 1999")
       expect(page).to have_content("Pages: 200")
-      expect(page).to_not have_content(jim.name)
-      expect(Author.count).to eq(2)
+      expect(page).to have_content(jim.name)
     end
   end
 end
