@@ -44,7 +44,7 @@ describe 'when I visit /books/new' do
       visit new_book_path
 
       fill_in "book[title]", with: ""
-      select "Jim Gaffigan", from: "book_author_ids"
+      fill_in "book[authors]", with: "Jim Gaffigan"
       fill_in "book[year]", with: "1999"
       fill_in "book[page_count]", with: "200"
 
