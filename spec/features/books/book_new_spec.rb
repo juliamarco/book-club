@@ -12,16 +12,30 @@ describe 'when I visit /books/new' do
 
 
       fill_in "book[title]", with: "IT"
-      select "Jim Gaffigan", from: "book_author_ids"
+      fill_in "book[authors]", with: "#{author_1_name}, #{author_2_name}"
       fill_in "book[year]", with: "1999"
       fill_in "book[page_count]", with: "200"
 
-      click_on "Add Book"
+      click_button "Add Book"
 
       expect(page).to have_content("IT")
+      expect(page).to have_content("#{author_1_name}\n#{author_2_name}")
       expect(page).to have_content("Year: 1999")
       expect(page).to have_content("Pages: 200")
-      expect(page).to have_content(jim.name)
+      expect(page).to_not have_content(jim.name)
+    end
+
+    it "can't create a book if all fields are empty" do
+      visit new_book_path
+
+      click_button "Add Book"
+
+      ["Title can't be blank",
+      "Year can't be blank",
+      "Page count can't be blank",
+      "Authors can't be blank"].each do |msg|
+        expect(page).to have_content(msg)
+      end
     end
 
     it "redisplays new page if information is not provided" do
