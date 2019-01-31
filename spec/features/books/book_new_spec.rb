@@ -12,17 +12,17 @@ describe 'when I visit /books/new' do
 
 
       fill_in "book[title]", with: "IT"
-      select "Jim Gaffigan", from: "book_author_ids"
+      fill_in "book[authors]", with: "#{author_1_name}, #{author_2_name}"
       fill_in "book[year]", with: "1999"
       fill_in "book[page_count]", with: "200"
 
       click_on "Add Book"
 
       expect(page).to have_content("IT")
-      expect(page).to have_content("#{jim.name}")
+      expect(page).to have_content("#{author_1_name}\n#{author_2_name}")
       expect(page).to have_content("Year: 1999")
       expect(page).to have_content("Pages: 200")
-      expect(page).to have_content(jim.name)
+      expect(page).to_not have_content(jim.name)
     end
   end
 end
