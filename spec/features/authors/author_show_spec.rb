@@ -10,7 +10,7 @@ describe 'When I visit /authors/:id' do
     book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [stephen_king])
 
     visit author_path(herman_melville)
-
+    # save_and_open_page
     expect(page).to have_content(book_1.title)
     expect(page).to have_content("#{stephen_king.name}\n#{herman_melville.name}")
     expect(page).to have_content(book_1.page_count)
