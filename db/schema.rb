@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190130030250) do
+ActiveRecord::Schema.define(version: 20190131223554) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20190130030250) do
     t.string "title"
     t.integer "year"
     t.integer "page_count"
-    t.string "cover_image"
+    t.string "cover_image", default: "https://www.khadims.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/big-no-image-found.jpg"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -40,7 +40,7 @@ ActiveRecord::Schema.define(version: 20190130030250) do
   create_table "reviews", force: :cascade do |t|
     t.integer "rating"
     t.string "title"
-    t.string "text"
+    t.string "review_text"
     t.bigint "user_id"
     t.bigint "book_id"
     t.datetime "created_at", null: false
