@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'when I visit /books/new' do
+describe 'when I visit /author/new' do
   context 'as a visitor' do
     it "shows me a form to add a new book" do
       jim = Author.create(name: "Jim Gaffigan")
