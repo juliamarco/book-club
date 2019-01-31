@@ -1,11 +1,15 @@
 <h2><%= @author.name %></h2>
 <% @author.books.each do |book| %>
   <section class="author-show-book">
-  <h4><%= book.title %></h4>
-  <% book.authors.each do |author| %>
-    <h4><%= author.name %></h4>
-  <% end %>
-  <p>Year: <%= book.year %></p>
-  <p>Page Count: <%= book.page_count %></p>
+    <img src="<%= book.cover_image %>"  alt="<%= book.title %> Cover">
+    <h4><%= book.title %></h4>
+    <% if book.authors.count > 1 %>
+    <p>Co-authored by: </p>
+      <% book.authors.each do |author| %>
+        <h4><%= author.name unless author.name == @author.name %></h4>
+      <% end %>
+      <% end %>
+    <p>Year: <%= book.year %></p>
+    <p>Page Count: <%= book.page_count %></p>
   </section>
 <% end %>
