@@ -15,13 +15,8 @@ class BooksController < ApplicationController
 
   def create
     @book = Book.new(book_params)
-    authors_in_database = Author.all.pluck(:name)
-    @book.authors = params[:book][:authors].split(", ").map do |author|
-      if !authors_in_database.include?(author)
-        Author.create(name: author)
-      else
-        Author.find_by(name: author)
-      end
+    @book.authors = params[:book][:authors].split(",").map do |author|
+      Author.find_or_create_by(name: author.titleize.strip)
     end
     if @book.save
       redirect_to book_path(@book)

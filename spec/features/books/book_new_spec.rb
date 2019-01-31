@@ -24,5 +24,18 @@ describe 'when I visit /books/new' do
       expect(page).to have_content("Pages: 200")
       expect(page).to_not have_content(jim.name)
     end
+
+    it "can't create a book if all fields are empty" do
+      visit new_book_path
+
+      click_button "Add Book"
+
+      ["Title can't be blank",
+      "Year can't be blank",
+      "Page count can't be blank",
+      "Authors can't be blank"].each do |msg|
+        expect(page).to have_content(msg)
+      end
+    end
   end
 end

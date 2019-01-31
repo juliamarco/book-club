@@ -5,6 +5,7 @@ RSpec.describe Book do
     it {should validate_presence_of :title}
     it {should validate_presence_of :year}
     it {should validate_presence_of :page_count}
+    it {should validate_presence_of :authors}
   end
 
   describe 'relationships' do
