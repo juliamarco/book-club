@@ -4,10 +4,8 @@ describe 'when I visit /books' do
   context 'as a visitor' do
     it 'displays all book titles in the database' do
       stephen_king = Author.create(name: "Stephen King")
-      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986)
-      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977)
-      BookAuthor.create(author: stephen_king, book: book_1)
-      BookAuthor.create(author: stephen_king, book: book_2)
+      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king])
+      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [stephen_king])
 
       visit books_path
 
@@ -35,11 +33,8 @@ describe 'when I visit /books' do
     it 'displays multiple authors if present' do
       stephen_king = Author.create(name: "Stephen King")
       herman_melville = Author.create(name: "Herman Melville")
-      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986)
-      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977)
-      BookAuthor.create(author: stephen_king, book: book_1)
-      BookAuthor.create(author: stephen_king, book: book_2)
-      BookAuthor.create(author: herman_melville, book: book_2)
+      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king, herman_melville])
+      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [stephen_king, herman_melville])
 
       visit books_path
 
