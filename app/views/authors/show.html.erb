@@ -1,0 +1,11 @@
+<h2><%= @author.name %></h2>
+<% @author.books.each do |book| %>
+  <section class="author-show-book">
+  <h4><%= book.title %></h4>
+  <% book.authors.each do |author| %>
+    <h4><%= author.name %></h4>
+  <% end %>
+  <p>Year: <%= book.year %></p>
+  <p>Page Count: <%= book.page_count %></p>
+  </section>
+<% end %>
