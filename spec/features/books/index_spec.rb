@@ -38,13 +38,13 @@ describe 'when I visit /books' do
       visit books_path
 
       within "#book-#{book_1.id}" do
-        expect(page).to have_link(book_path(book_1))
-        expect(page).to_not have_link(book_path(book_2))
+        expect(page).to have_link(book_1.title)
+        expect(page).to_not have_link(book_2.title)
       end
 
       within "#book-#{book_2.id}" do
-        expect(page).to have_link(book_path(book_2))
-        expect(page).to_not have_link(book_path(book_1))
+        expect(page).to have_link(book_2.title)
+        expect(page).to_not have_link(book_1.title)
       end
     end
 

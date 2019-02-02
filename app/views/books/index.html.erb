@@ -1,6 +1,6 @@
 <% @books.each do |book| %>
   <section class="books-index" id="book-<%= book.id %>">
-    <h3><%= book.title %></h3>
+    <a href="<%= book_path(book) %>" ><h3><%= book.title %></h3></a>
       <% book.authors.each do |author| %>
         <h5><%= author.name %></h5>
       <% end %>
