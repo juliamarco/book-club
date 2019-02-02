@@ -1,3 +1,10 @@
+<section class="book-sort-bar">
+  <ul>
+    <li><a href="<%= books_path %>?sort=page_count&order=asc">Sort by Page Count (Ascending)</a></li>
+    <li><a href="<%= books_path %>?sort=page_count&order=desc">Sort by Page Count (Descending)</a></li>
+  </ul>
+</section>
+
 <% @books.each do |book| %>
   <section class="books-index" id="book-<%= book.id %>">
     <h3><%= book.title %></h3>
