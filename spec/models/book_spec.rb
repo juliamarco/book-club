@@ -1,4 +1,5 @@
 require 'rails_helper'
+require 'date'
 
 RSpec.describe Book do
   describe 'validations' do
@@ -6,6 +7,9 @@ RSpec.describe Book do
     it {should validate_presence_of :year}
     it {should validate_presence_of :page_count}
     it {should validate_presence_of :authors}
+
+    it {should validate_numericality_of(:year).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(Date.today.year)}
+    it {should validate_numericality_of(:title).is_greater_than_or_equal_to(0)}
   end
 
   describe 'relationships' do
