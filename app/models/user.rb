@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  validates_presence_of :name
+  validates :name, presence: true, uniqueness: true, length: {minimum: 1}
 
   has_many :reviews
 end

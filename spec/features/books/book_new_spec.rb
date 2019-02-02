@@ -53,10 +53,5 @@ describe 'when I visit /books/new' do
       expect(page).to_not have_content("Year: 1999")
       expect(page).to_not have_content("Pages: 200")
     end
-
-    it 'can sort by number of pages in ascending and descending order' do
-
-    end
-
   end
 end
