@@ -1,17 +1,20 @@
 require 'date'
 
 class Book < ApplicationRecord
-  validates_presence_of :title
   validates_presence_of :authors
 
   validates :year, presence: true, numericality: {
     greater_than_or_equal_to: 0,
-    less_than_or_equal_to: Date.today.year
+    less_than_or_equal_to: Date.today.year,
+    only_integer: true
   }
 
   validates :page_count, presence: true, numericality: {
-    greater_than_or_equal_to: 0
+    greater_than_or_equal_to: 0,
+    only_integer: true
   }
+
+  validates :title, presence: true, length: {minimum: 1}
 
   has_many :book_authors
   has_many :reviews
