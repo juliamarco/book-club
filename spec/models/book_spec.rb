@@ -22,20 +22,14 @@ RSpec.describe Book do
       @book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [@stephen_king, @herman_melville])
     end
 
-    it '.by_page_count_ascending' do
-      expect(Book.by_page_count_ascending).to eq [@book_2, @book_1]
+    it '.by_page_count' do
+      expect(Book.by_page_count('desc')).to eq [@book_1, @book_2]
+      expect(Book.by_page_count('asc')).to eq [@book_2, @book_1]
     end
 
-    it '.by_page_count_descending' do
-      expect(Book.by_page_count_descending).to eq [@book_1, @book_2]
-    end
-
-    it '.by_year_ascending' do
-      expect(Book.by_year_ascending).to eq [@book_2, @book_1]
-    end
-
-    it '.by_year_descending' do
-      expect(Book.by_year_descending).to eq [@book_1, @book_2]
+    it '.by_year' do
+      expect(Book.by_year('asc')).to eq [@book_2, @book_1]
+      expect(Book.by_year('desc')).to eq [@book_1, @book_2]
     end
   end
 
