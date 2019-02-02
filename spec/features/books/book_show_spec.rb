@@ -28,7 +28,7 @@ describe 'when I visit /books/:id' do
     visit book_path(book_1)
 
     within "#add-review"
-
+    
     expect(page).to have_link "Add Review"
     click_link "Add Review"
 
