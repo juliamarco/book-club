@@ -10,6 +10,10 @@ class BooksController < ApplicationController
 
   def show
     @book = Book.find(params[:id])
+    # binding.pry
+    @top_reviews = Review.top_reviews
+    @bottom_reviews = Review.bottom_reviews
+    @average_rating = Review.average_rating
   end
 
   def new

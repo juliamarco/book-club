@@ -23,4 +23,5 @@ class ReviewsController < ApplicationController
     params.require(:review).permit(:title, :user, :rating, :review_text, :book_id)
   end
 
+
 end
