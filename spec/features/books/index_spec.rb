@@ -34,20 +34,16 @@ describe 'when I visit /books' do
     end
 
     it 'all book titles link to the book show page' do
-      stephen_king = Author.create(name: "Stephen King")
-      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king])
-      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [stephen_king])
-
       visit books_path
 
-      within "#book-#{book_1.id}" do
-        expect(page).to have_link(book_1.title)
-        expect(page).to_not have_link(book_2.title)
+      within "#book-#{@book_1.id}" do
+        expect(page).to have_link(@book_1.title)
+        expect(page).to_not have_link(@book_2.title)
       end
 
-      within "#book-#{book_2.id}" do
-        expect(page).to have_link(book_2.title)
-        expect(page).to_not have_link(book_1.title)
+      within "#book-#{@book_2.id}" do
+        expect(page).to have_link(@book_2.title)
+        expect(page).to_not have_link(@book_1.title)
       end
     end
 
@@ -96,6 +92,44 @@ describe 'when I visit /books' do
       index_of_book_2_title = page.body.index(@book_2.title)
 
       expect(index_of_book_1_title).to be < index_of_book_2_title
+    end
+
+    it 'can sort by year in ascending and descending order' do
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  score: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: @book_1,
+                  user: tim
+                )
+
+      review_2 = Review.create(title: "Amazing",
+                  score: 5,
+                  review_text: "I take it all back, the clown is pure evil.",
+                  book: @book_1,
+                  user: tim
+                )
+
+      review_3 = Review.create(title: "Meh",
+                  score: 3,
+                  review_text: "Doesn't have clowns. Kinda boring.",
+                  book: @book_2,
+                  user: tim
+                )
+
+      visit books_path
+      click_link("Sort by Rating (Ascending)")
+      index_of_book_1_title = page.body.index(@book_1.title)
+      index_of_book_2_title = page.body.index(@book_2.title)
+
+      expect(index_of_book_1_title).to be < index_of_book_2_title
+
+      click_link("Sort by Rating (Descending)")
+
+      index_of_book_1_title = page.body.index(@book_1.title)
+      index_of_book_2_title = page.body.index(@book_2.title)
+
+      expect(index_of_book_2_title).to be < index_of_book_1_title
     end
   end
 

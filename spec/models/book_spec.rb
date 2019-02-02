@@ -34,5 +34,25 @@ RSpec.describe Book do
   end
 
   describe 'instance methods' do
+
+    it '.average_rating' do
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  score: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: @book_1,
+                  user: tim
+                )
+
+      review_2 = Review.create(title: "Amazing",
+                  score: 4,
+                  review_text: "I take it all back, the clown is pure evil.",
+                  book: @book_1,
+                  user: tim
+                )
+
+      expect(@book_1.average_rating).to eq(3)
+
+    end
   end
 end
