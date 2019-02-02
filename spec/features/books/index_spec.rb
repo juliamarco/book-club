@@ -30,6 +30,24 @@ describe 'when I visit /books' do
 
     end
 
+    it 'all book titles link to the book show page' do
+      stephen_king = Author.create(name: "Stephen King")
+      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king])
+      book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [stephen_king])
+
+      visit books_path
+
+      within "#book-#{book_1.id}" do
+        expect(page).to have_link(book_1.title)
+        expect(page).to_not have_link(book_2.title)
+      end
+
+      within "#book-#{book_2.id}" do
+        expect(page).to have_link(book_2.title)
+        expect(page).to_not have_link(book_1.title)
+      end
+    end
+
     it 'displays multiple authors if present' do
       stephen_king = Author.create(name: "Stephen King")
       herman_melville = Author.create(name: "Herman Melville")
