@@ -14,7 +14,7 @@ describe 'When I visit books/:id/review/new' do
       fill_in "review[user]", with: "megustaleer"
       fill_in "review[rating]", with: 5
       fill_in "review[review_text]", with: "I read it in two days"
-
+      # save_and_open_page
       click_button "Add Review"
 
       expect(current_path).to eq(book_path(book_1))
