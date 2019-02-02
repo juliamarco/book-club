@@ -1,9 +1,9 @@
 <section class="book-sort-bar">
   <ul>
-    <li><a href="<%= books_path %>?sort=page_count&order=asc">Sort by Page Count (Ascending)</a></li>
-    <li><a href="<%= books_path %>?sort=page_count&order=desc">Sort by Page Count (Descending)</a></li>
-    <li><a href="<%= books_path %>?sort=year&order=asc">Sort by Year (Ascending)</a></li>
-    <li><a href="<%= books_path %>?sort=year&order=desc">Sort by Year (Descending)</a></li>
+    <li><%= link_to 'Sort by Page Count (Ascending)', books_path({sort: 'page_count', order: 'asc'}) %></li>
+    <li><%= link_to 'Sort by Page Count (Descending)', books_path({sort: 'page_count', order: 'desc'}) %></li>
+    <li><%= link_to 'Sort by Year (Ascending)', books_path({sort: 'year', order: 'asc'}) %></li>
+    <li><%= link_to 'Sort by Year (Descending)', books_path({sort: 'year', order: 'desc'}) %></li>
   </ul>
 </section>
 
