@@ -97,21 +97,21 @@ describe 'when I visit /books' do
     it 'can sort by year in ascending and descending order' do
       tim = User.create(name: "Tim")
       review_1 = Review.create(title: "Total ripoff",
-                  score: 2,
+                  rating: 2,
                   review_text: "Worst thing ive read this afternoon",
                   book: @book_1,
                   user: tim
                 )
 
       review_2 = Review.create(title: "Amazing",
-                  score: 5,
+                  rating: 5,
                   review_text: "I take it all back, the clown is pure evil.",
                   book: @book_1,
                   user: tim
                 )
 
       review_3 = Review.create(title: "Meh",
-                  score: 3,
+                  rating: 3,
                   review_text: "Doesn't have clowns. Kinda boring.",
                   book: @book_2,
                   user: tim
