@@ -58,10 +58,13 @@ describe 'when I visit /books' do
 
       click_link("Sort by Page Count (Descending)")
 
+      index_of_book_1_title = page.body.index(@book_1.title)
+      index_of_book_2_title = page.body.index(@book_2.title)
+
       expect(index_of_book_1_title).to be < index_of_book_2_title
     end
 
-    it 'can sort by number of pages in ascending and descending order' do
+    it 'can sort by year in ascending and descending order' do
       visit books_path
       click_link("Sort by Year (Ascending)")
       index_of_book_1_title = page.body.index(@book_1.title)
@@ -70,6 +73,9 @@ describe 'when I visit /books' do
       expect(index_of_book_2_title).to be < index_of_book_1_title
 
       click_link("Sort by Year (Descending)")
+
+      index_of_book_1_title = page.body.index(@book_1.title)
+      index_of_book_2_title = page.body.index(@book_2.title)
 
       expect(index_of_book_1_title).to be < index_of_book_2_title
     end
