@@ -1,7 +1,11 @@
 class BooksController < ApplicationController
 
   def index
-    @books = Book.all
+    case params[:sort]
+      when 'page_count' then @books = Book.by_page_count(params[:order])
+      when 'year' then @books = Book.by_year(params[:order])
+      else @books = Book.all
+    end
   end
 
   def show

@@ -40,7 +40,7 @@ describe 'when I visit /books/new' do
 
     it "redisplays new page if information is not provided" do
 
-      Author.create!(name: "Jim Gaffigan")
+      Author.create(name: "Jim Gaffigan")
       visit new_book_path
 
       fill_in "book[title]", with: ""
@@ -52,6 +52,10 @@ describe 'when I visit /books/new' do
 
       expect(page).to_not have_content("Year: 1999")
       expect(page).to_not have_content("Pages: 200")
+    end
+
+    it 'can sort by number of pages in ascending and descending order' do
+
     end
 
   end

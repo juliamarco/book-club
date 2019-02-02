@@ -7,4 +7,19 @@ class Book < ApplicationRecord
   has_many :book_authors
   has_many :reviews
   has_many :authors, through: :book_authors
+
+  def self.by_page_count(order)
+    case order
+    when 'desc' then order(page_count: :desc)
+      else order(page_count: :asc)
+    end
+  end
+
+  def self.by_year(order)
+    case order
+    when 'desc' then order(page_count: :desc)
+      else order(page_count: :asc)
+    end
+  end
+
 end
