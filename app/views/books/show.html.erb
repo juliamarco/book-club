@@ -4,3 +4,4 @@
 <% end %>
 <p>Pages: <%= @book.page_count %></p>
 <p>Year: <%= @book.year %></p>
+<h3 id="add-review"><%= link_to("Add Review", new_book_review_path(@book, @book.reviews.ids)) %><h3>
