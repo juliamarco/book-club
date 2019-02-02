@@ -117,19 +117,20 @@ describe 'when I visit /books' do
                   user: tim
                 )
 
+
       visit books_path
       click_link("Sort by Rating (Ascending)")
       index_of_book_1_title = page.body.index(@book_1.title)
       index_of_book_2_title = page.body.index(@book_2.title)
 
-      expect(index_of_book_1_title).to be < index_of_book_2_title
+      expect(index_of_book_2_title).to be < index_of_book_1_title
 
       click_link("Sort by Rating (Descending)")
 
       index_of_book_1_title = page.body.index(@book_1.title)
       index_of_book_2_title = page.body.index(@book_2.title)
 
-      expect(index_of_book_2_title).to be < index_of_book_1_title
+      expect(index_of_book_1_title).to be < index_of_book_2_title
     end
   end
 
