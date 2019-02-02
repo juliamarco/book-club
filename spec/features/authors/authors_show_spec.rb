@@ -22,18 +22,4 @@ describe 'When I visit /authors/:id' do
     end
     end
 
-    it "shows me a link to add a new review for this book" do
-      herman_melville = Author.create(name: "Herman Melville")
-      stephen_king = Author.create(name: "Stephen King")
-      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king, herman_melville], cover_image: "https://prodimage.images-bn.com/pimages/9781501142970_p0_v3_s550x406.jpg")
-
-      visit author_path(herman_melville)
-
-      within "#add-review"
-
-      expect(page).to have_link "Add Review"
-      click_link "Add Review"
-
-      expect(current_path).to eq(new_review_path)
-    end
   end

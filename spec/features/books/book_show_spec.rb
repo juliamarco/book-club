@@ -19,4 +19,19 @@ describe 'when I visit /books/:id' do
       expect(page).to_not have_content(book_2.page_count)
     end
   end
+
+  it "shows me a link to add a new review for this book" do
+    herman_melville = Author.create(name: "Herman Melville")
+    stephen_king = Author.create(name: "Stephen King")
+    book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king, herman_melville], cover_image: "https://prodimage.images-bn.com/pimages/9781501142970_p0_v3_s550x406.jpg")
+
+    visit book_path(book_1)
+
+    within "#add-review"
+
+    expect(page).to have_link "Add Review"
+    click_link "Add Review"
+
+    expect(current_path).to eq(new_book_review_path(book_1, book_1.reviews.ids))
+  end
 end
