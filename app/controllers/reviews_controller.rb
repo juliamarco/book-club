@@ -7,8 +7,9 @@ class ReviewsController < ApplicationController
 
   def create
     @book = Book.find(params[:book_id])
-    @user = User.find_or_create_by(name: review_params[:user].titleize)
-    @review = @book.reviews.create(title: review_params[:title], user: @user, rating: review_params[:rating], review_text: review_params[:review_text] )
+    @user = User.find_or_create_by(name: params[:review][:user].titleize)
+    @review = @book.reviews.new(review_params)
+    @review.user = @user
 
     if @review.save
       redirect_to book_path(@book)
@@ -26,7 +27,7 @@ class ReviewsController < ApplicationController
   private
 
   def review_params
-    params.require(:review).permit(:title, :user, :rating, :review_text, :book_id)
+    params.require(:review).permit(:title, :rating, :review_text, :book_id)
   end
 
 
