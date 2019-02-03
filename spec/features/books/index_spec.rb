@@ -67,36 +67,40 @@ describe 'when I visit /books' do
     it 'can sort by number of pages in ascending and descending order' do
       visit books_path
       click_link("Sort by Page Count (Ascending)")
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
 
-      expect(index_of_book_2_title).to be < index_of_book_1_title
-
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_4.title)
+      expect(books[1].text).to have_content(@book_2.title)
+      expect(books[2].text).to have_content(@book_3.title)
+      expect(books[3].text).to have_content(@book_1.title)
       click_link("Sort by Page Count (Descending)")
 
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
-
-      expect(index_of_book_1_title).to be < index_of_book_2_title
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_1.title)
+      expect(books[1].text).to have_content(@book_3.title)
+      expect(books[2].text).to have_content(@book_2.title)
+      expect(books[3].text).to have_content(@book_4.title)
     end
 
     it 'can sort by year in ascending and descending order' do
       visit books_path
       click_link("Sort by Year (Ascending)")
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
-
-      expect(index_of_book_2_title).to be < index_of_book_1_title
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_2.title)
+      expect(books[1].text).to have_content(@book_3.title)
+      expect(books[2].text).to have_content(@book_1.title)
+      expect(books[3].text).to have_content(@book_4.title)
 
       click_link("Sort by Year (Descending)")
 
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
-
-      expect(index_of_book_1_title).to be < index_of_book_2_title
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_4.title)
+      expect(books[1].text).to have_content(@book_1.title)
+      expect(books[2].text).to have_content(@book_3.title)
+      expect(books[3].text).to have_content(@book_2.title)
     end
 
-    it 'can sort by year in ascending and descending order' do
+    it 'can sort by rating in ascending and descending order' do
       tim = User.create(name: "Tim")
       review_1 = Review.create(title: "Total ripoff",
                   rating: 2,
@@ -122,17 +126,19 @@ describe 'when I visit /books' do
 
       visit books_path
       click_link("Sort by Rating (Ascending)")
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
-
-      expect(index_of_book_2_title).to be < index_of_book_1_title
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_3.title)
+      expect(books[1].text).to have_content(@book_4.title)
+      expect(books[2].text).to have_content(@book_2.title)
+      expect(books[3].text).to have_content(@book_1.title)
 
       click_link("Sort by Rating (Descending)")
 
-      index_of_book_1_title = page.body.index(@book_1.title)
-      index_of_book_2_title = page.body.index(@book_2.title)
-
-      expect(index_of_book_1_title).to be < index_of_book_2_title
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_1.title)
+      expect(books[1].text).to have_content(@book_2.title)
+      expect(books[2].text).to have_content(@book_3.title)
+      expect(books[3].text).to have_content(@book_4.title)
     end
 
     describe 'it has a statistics area at the top of the page' do
@@ -144,11 +150,11 @@ describe 'when I visit /books' do
         @review_1 = @book_1.reviews.create(rating: 2, title: "Not the best", review_text: "It was an average book", user_id: @user_1.id)
         @review_2 = @book_3.reviews.create(rating: 4, title: "Loved it", review_text: "Enjoyed every single page of it!", user_id: @user_2.id)
         @review_3 = @book_4.reviews.create(rating: 5, title: "Pretty awesome", review_text: "Interesting all the way until the end", user_id: @user_3.id)
-        @review_4 = @book_2.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: @user_4.id)
+        @review_4 = @book_3.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: @user_4.id)
         @review_5 = @book_1.reviews.create(rating: 3, title: "Average book", review_text: "I though it would be better", user_id: @user_1.id)
         @review_6 = @book_2.reviews.create(rating: 1, title: "Super Boring", review_text: "Do not waste your time reading this book", user_id: @user_1.id)
         @review_7 = @book_2.reviews.create(rating: 2, title: "Not what I expected", review_text: "Definitely not worth it", user_id: @user_3.id)
-        # Book_1 : 2.5, Book_2 : 1.5, Book_3 : 4, Book_4 : 5
+        # Book_1 : 2.5, Book_2 : 1.5, Book_3 : 4.5, Book_4 : 5
         # User_1 : 3, User_2 : 1, User_3 : 2, User_4 : 1
       end
 

@@ -19,7 +19,7 @@
     <h2>Top Reviewers:</h2>
     <ul>
       <% @top_reviewers.each do |reviewer| %>
-        <li><%= link_to reviewer.name, user_path(reviewer) %> Reviews: <%= reviewer.review_count %></li>
+        <li><%#link_to reviewer.name, user_path(reviewer) %> Reviews: <%# reviewer.review_count %></li>
       <% end %>
     </ul>
   </section>
@@ -35,7 +35,7 @@
     <li><%= link_to 'Sort by Rating (Descending)', books_path({sort: 'rating', order: 'desc'}) %></li>
   </ul>
 </section>
-
+<section class="book-wrapper">
 <% @books.each do |book| %>
   <section class="books-index" id="book-<%= book.id %>">
     <a href="<%= book_path(book) %>" ><h3><%= book.title %></h3></a>
@@ -46,3 +46,4 @@
       <p>Year: <%= book.year %></p>
   </section>
 <% end %>
+</section>
