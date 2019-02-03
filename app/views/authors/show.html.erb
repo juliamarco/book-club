@@ -1,15 +1,25 @@
 <h2><%= @author.name %></h2>
 <% @author.books.each do |book| %>
-  <section class="author-show-book">
+  <section class="author-show-book" id="book-<%= book.id %>">
     <img src="<%= book.cover_image %>"  alt="<%= book.title %> Cover">
-    <h4><%= book.title %></h4>
+    <h4><%= link_to book.title, book_path(book) %></h4>
     <% if book.authors.count > 1 %>
     <p>Co-authored by: </p>
       <% book.authors.each do |author| %>
-        <h4><%= author.name unless author.name == @author.name %></h4>
+        <h4><%= link_to author.name, author_path(author) unless author.name == @author.name %></h4>
       <% end %>
-      <% end %>
+    <% end %>
     <p>Year: <%= book.year %></p>
     <p>Page Count: <%= book.page_count %></p>
+    <section class="top-review" id="top-review">
+      <% top_review = book.top_review %>
+      <% if top_review != nil %>
+        <h5><%= top_review.title %></h5>
+        <p><%= link_to top_review.user.name user_path(top_review.user) %></p>
+        <p><%= top_review.review_text %></p>
+      <% else %>
+        <h5>Book has no reviews</h5>
+      <% end %>
+    </section>
   </section>
 <% end %>
