@@ -94,5 +94,14 @@ describe 'when I visit /books/:id' do
       end
     end
 
+    it 'has a link to delete the book' do
+      visit book_path(@book_1)
+
+      click_button("Delete Book")
+
+      expect(current_path).to eq(books_path)
+      expect(page).to_not have_css("#book-#{@book_1.id}")
+    end
+
   end
 end
