@@ -11,4 +11,8 @@ class User < ApplicationRecord
     .order(id: :asc)
     .limit(count)
   end
+
+  def review_count
+    reviews.count
+  end
 end
