@@ -19,7 +19,7 @@
     <h2>Top Reviewers:</h2>
     <ul>
       <% @top_reviewers.each do |reviewer| %>
-        <!-- <li><%#link_to reviewer.name, user_path(reviewer) %> Reviews: <%# reviewer.review_count %></li> -->
+        <li><%= link_to reviewer.name, user_path(reviewer) %> Reviews: <%= reviewer.review_count %></li>
       <% end %>
     </ul>
   </section>

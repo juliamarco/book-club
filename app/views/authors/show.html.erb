@@ -14,8 +14,9 @@
     <section class="top-review" id="top-review">
       <% top_review = book.top_review %>
       <% if top_review != nil %>
+        <h4>Top Review:</h4>
         <h5><%= top_review.title %></h5>
-        <p><%= link_to top_review.user.name user_path(top_review.user) %></p>
+        <p><%= link_to top_review.user.name, user_path(top_review.user) %></p>
         <p><%= top_review.review_text %></p>
       <% else %>
         <h5>Book has no reviews</h5>
