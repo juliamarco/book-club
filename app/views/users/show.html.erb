@@ -1,0 +1,14 @@
+
+<h3> <%= @user.name %>'s reviews:</h3>
+<h4><% @user.reviews.each do |review| %></h4>
+  <ul>
+    <li>
+      <h5><%= review.title %></h5>
+      <p>Review: <%= review.review_text %></p>
+      <p>Rating: <%= review.rating %></p>
+      <p>Book: <%= review.book.title %></p>
+      <img src="<%= review.book.cover_image %>">
+      <p>Review written on the: <%= review.created_at %></p>
+    </li>
+  </ul>
+<% end %>
