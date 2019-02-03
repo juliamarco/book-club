@@ -121,7 +121,7 @@ RSpec.describe Book do
     end
 
     it '.review_count' do
-      expect(@book_1).review_count.to eq(2)
+      expect(@book_1.review_count).to eq(2)
     end
   end
 end
