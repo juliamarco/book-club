@@ -1,3 +1,30 @@
+<section class="statistics">
+  <section id="worst-books">
+    <h2>Worst Books:</h2>
+    <ul>
+      <% @worst_books.each do |book| %>
+        <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %> </li>
+      <% end %>
+    </ul>
+  </section>
+  <section id="top-books">
+    <h2>Top Books:</h2>
+    <ul>
+      <% @top_books.each do |book| %>
+        <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %></li>
+      <% end %>
+    </ul>
+  </section>
+  <section id="top-reviewers">
+    <h2>Top Reviewers:</h2>
+    <ul>
+      <% @top_reviewers.each do |reviewer| %>
+        <li><%= link_to reviewer.name, user_path(reviewer) %> Reviews: <%= reviewer.review_count %></li>
+      <% end %>
+    </ul>
+  </section>
+</section>
+
 <section class="book-sort-bar">
   <ul>
     <li><%= link_to 'Sort by Page Count (Ascending)', books_path({sort: 'page_count', order: 'asc'}) %></li>
