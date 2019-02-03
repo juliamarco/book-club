@@ -53,6 +53,11 @@ RSpec.describe Review do
       expect(Review.average_rating).to eq 3.1
     end
 
+    it '.by_id' do
+      expect(Review.by_id('asc')).to eq [@review_1, @review_2, @review_3, @review_4, @review_5, @review_6, @review_7]
+      expect(Review.by_id('desc')).to eq [@review_7, @review_6, @review_5, @review_4, @review_3, @review_2, @review_1]
+    end
+
   end
 
   describe 'instance methods' do
