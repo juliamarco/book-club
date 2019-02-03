@@ -7,6 +7,8 @@ describe 'when I visit /books' do
       @herman_melville = Author.create(name: "Herman Melville")
       @book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [@stephen_king, @herman_melville])
       @book_2 = Book.create(title: "The Shining", page_count: 688, year: 1977, authors: [@stephen_king, @herman_melville])
+      @book_3 = Book.create(title: "The Colorado Kid", page_count: 702, year: 1984, authors: [@stephen_king])
+      @book_4 = Book.create(title: "Carrie", page_count: 404, year: 1999, authors: [@stephen_king])
     end
 
     it 'displays all book titles in the database' do
@@ -131,6 +133,60 @@ describe 'when I visit /books' do
       index_of_book_2_title = page.body.index(@book_2.title)
 
       expect(index_of_book_1_title).to be < index_of_book_2_title
+    end
+
+    describe 'it has a statistics area at the top of the page' do
+      before :each do
+        @user_1 = User.create(name: "ilovereading")
+        @user_2 = User.create(name: "tomas_1999")
+        @user_3 = User.create(name: "diego_marco")
+        @user_4 = User.create(name: "joaquin_meteme")
+        @review_1 = @book_1.reviews.create(rating: 2, title: "Not the best", review_text: "It was an average book", user_id: @user_1.id)
+        @review_2 = @book_3.reviews.create(rating: 4, title: "Loved it", review_text: "Enjoyed every single page of it!", user_id: @user_2.id)
+        @review_3 = @book_4.reviews.create(rating: 5, title: "Pretty awesome", review_text: "Interesting all the way until the end", user_id: @user_3.id)
+        @review_4 = @book_2.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: @user_4.id)
+        @review_5 = @book_1.reviews.create(rating: 3, title: "Average book", review_text: "I though it would be better", user_id: @user_1.id)
+        @review_6 = @book_2.reviews.create(rating: 1, title: "Super Boring", review_text: "Do not waste your time reading this book", user_id: @user_1.id)
+        @review_7 = @book_2.reviews.create(rating: 2, title: "Not what I expected", review_text: "Definitely not worth it", user_id: @user_3.id)
+        # Book_1 : 2.5, Book_2 : 1.5, Book_3 : 4, Book_4 : 5
+        # User_1 : 3, User_2 : 1, User_3 : 2, User_4 : 1
+      end
+
+      it 'shows three of the highest rated books' do
+        visit books_path
+
+        expected = "#{@book_4.title} Score: #{@book_4.average_rating} "
+        expected += "#{@book_3.title} Score: #{@book_3.average_rating} "
+        expected += "#{@book_1.title} Score: #{@book_1.average_rating}"
+
+        within '#top-books' do
+          expect(page).to have_content(expected)
+        end
+      end
+
+      it 'shows three of the lowest rated books' do
+        visit books_path
+
+        expected = "#{@book_2.title} Score: #{@book_2.average_rating} "
+        expected += "#{@book_1.title} Score: #{@book_1.average_rating} "
+        expected += "#{@book_3.title} Score: #{@book_3.average_rating}"
+
+        within '#worst-books' do
+          expect(page).to have_content(expected)
+        end
+      end
+
+      it 'shows three of the users who have written the most reviews' do
+        visit books_path
+
+        expected = "#{@user_1.name} Reviews: #{@user_1.review_count} "
+        expected += "#{@user_3.name} Reviews: #{@user_3.review_count} "
+        expected += "#{@user_2.name} Reviews: #{@user_2.review_count}"
+
+        within '#top-reviewers' do
+          expect(page).to have_content(expected)
+        end
+      end
     end
   end
 
