@@ -36,6 +36,7 @@ describe 'when I visit /users/:id' do
         click_button("Delete")
       end
 
+      expect(current_path).to eq(user_path(@user_1))
       expect(page).to_not have_css("#review-#{@review_1.id}")
     end
 
