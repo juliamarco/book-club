@@ -9,7 +9,7 @@ class BooksController < ApplicationController
     end
     @top_books = Book.top_books
     @worst_books = Book.worst_books
-    @top_reviewers = User.top_reviewers
+    @top_reviewers = User.top_reviewers(3)
   end
 
   def show
