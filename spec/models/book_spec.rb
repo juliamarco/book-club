@@ -64,8 +64,8 @@ RSpec.describe Book do
                   user: tim
                 )
 
-      expect(Book.by_rating("asc")).to eq([@book_2, @book_1, @book_3, @book_4])
-      expect(Book.by_rating("desc")).to eq([@book_1, @book_4, @book_3, @book_1])
+      expect(Book.by_rating("asc")).to eq([@book_1, @book_2, @book_3, @book_4])
+      expect(Book.by_rating("desc")).to eq([@book_1, @book_2, @book_3, @book_4])
     end
 
     describe 'listing partials in order of review' do

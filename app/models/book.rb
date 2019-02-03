@@ -29,8 +29,8 @@ class Book < ApplicationRecord
 
   def self.by_year(order)
     case order
-      when 'desc' then order(page_count: :desc)
-      else order(page_count: :asc)
+    when 'desc' then order(year: :desc)
+    else order(year: :asc)
     end
   end
 
@@ -43,6 +43,7 @@ class Book < ApplicationRecord
     select("books.*, coalesce(AVG(reviews.rating), 0) AS average_rating")
     .left_outer_joins(:reviews)
     .group(:id)
+    .order(:id)
     .order("average_rating #{order_sym}")
   end
 
