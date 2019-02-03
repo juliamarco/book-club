@@ -28,6 +28,7 @@ describe 'when I visit /books' do
         expect(page).to have_content("Year: #{@book_1.year}")
         expect(page).to have_content("#{@stephen_king.name}")
         expect(page).to have_content("Average Rating: 2")
+        expect(page).to have_content("Number of Reviews: 1")
 
         expect(page).to_not have_content("Year: #{@book_2.year}")
         expect(page).to_not have_content("Pages: #{@book_2.page_count}")

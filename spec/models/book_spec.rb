@@ -97,27 +97,31 @@ RSpec.describe Book do
   end
 
   describe 'instance methods' do
+    before :each do
+      @stephen_king = Author.create(name: "Stephen King")
+      @book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [@stephen_king])
+      @tim = User.create(name: "Tim")
+      @review_1 = Review.create(title: "Total ripoff",
+        rating: 2,
+        review_text: "Worst thing ive read this afternoon",
+        book: @book_1,
+        user: @tim
+      )
+
+      @review_2 = Review.create(title: "Amazing",
+        rating: 4,
+        review_text: "I take it all back, the clown is pure evil.",
+        book: @book_1,
+        user: @tim
+      )
+    end
 
     it '.average_rating' do
-      stephen_king = Author.create(name: "Stephen King")
-      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king])
-      tim = User.create(name: "Tim")
-      review_1 = Review.create(title: "Total ripoff",
-                  rating: 2,
-                  review_text: "Worst thing ive read this afternoon",
-                  book: book_1,
-                  user: tim
-                )
+      expect(@book_1.average_rating).to eq(3)
+    end
 
-      review_2 = Review.create(title: "Amazing",
-                  rating: 4,
-                  review_text: "I take it all back, the clown is pure evil.",
-                  book: book_1,
-                  user: tim
-                )
-
-      expect(book_1.average_rating).to eq(3)
-
+    it '.review_count' do
+      expect(@book_1).review_count.to eq(2)
     end
   end
 end
