@@ -45,8 +45,51 @@ RSpec.describe Book do
       expect(Book.by_year('asc')).to eq [@book_2, @book_1]
       expect(Book.by_year('desc')).to eq [@book_1, @book_2]
     end
+
+    it '.by_rating' do
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  rating: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: @book_1,
+                  user: tim
+                )
+
+      review_2 = Review.create(title: "Amazing",
+                  rating: 4,
+                  review_text: "I take it all back, the clown is pure evil.",
+                  book: @book_1,
+                  user: tim
+                )
+
+      expect(Book.by_rating("asc")).to eq([@book_2, @book_1])
+      expect(Book.by_rating("desc")).to eq([@book_1, @book_2])
+    end
+
   end
 
   describe 'instance methods' do
+
+    it '.average_rating' do
+      stephen_king = Author.create(name: "Stephen King")
+      book_1 = Book.create(title: "IT", page_count: 1168, year: 1986, authors: [stephen_king])
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  rating: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: book_1,
+                  user: tim
+                )
+
+      review_2 = Review.create(title: "Amazing",
+                  rating: 4,
+                  review_text: "I take it all back, the clown is pure evil.",
+                  book: book_1,
+                  user: tim
+                )
+
+      expect(book_1.average_rating).to eq(3)
+
+    end
   end
 end

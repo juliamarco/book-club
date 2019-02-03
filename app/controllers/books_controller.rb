@@ -4,6 +4,7 @@ class BooksController < ApplicationController
     case params[:sort]
       when 'page_count' then @books = Book.by_page_count(params[:order])
       when 'year' then @books = Book.by_year(params[:order])
+      when 'rating' then @books = Book.by_rating(params[:order])
       else @books = Book.all
     end
   end
