@@ -43,12 +43,20 @@ class Book < ApplicationRecord
     select("books.*, coalesce(AVG(reviews.rating), 0) AS average_rating")
     .left_outer_joins(:reviews)
     .group(:id)
-    .order(:id)
     .order("average_rating #{order_sym}")
+    .order(:id)
+  end
+
+  def self.top_books
+    by_rating("desc").limit(3)
+  end
+
+  def self.worst_books
+    by_rating('asc').limit(3)
   end
 
   def average_rating
-    reviews.average(:rating)
+    reviews.average(:rating).to_f
   end
 
 end

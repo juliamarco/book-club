@@ -64,7 +64,7 @@ RSpec.describe Book do
                   user: tim
                 )
 
-      expect(Book.by_rating("asc")).to eq([@book_1, @book_2, @book_3, @book_4])
+      expect(Book.by_rating("asc")).to eq([@book_2, @book_3, @book_4, @book_1])
       expect(Book.by_rating("desc")).to eq([@book_1, @book_2, @book_3, @book_4])
     end
 
@@ -77,20 +77,20 @@ RSpec.describe Book do
         @review_1 = @book_1.reviews.create(rating: 2, title: "Not the best", review_text: "It was an average book", user_id: @user_1.id)
         @review_2 = @book_3.reviews.create(rating: 4, title: "Loved it", review_text: "Enjoyed every single page of it!", user_id: @user_2.id)
         @review_3 = @book_4.reviews.create(rating: 5, title: "Pretty awesome", review_text: "Interesting all the way until the end", user_id: @user_3.id)
-        @review_4 = @book_2.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: @user_4.id)
+        @review_4 = @book_3.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: @user_4.id)
         @review_5 = @book_1.reviews.create(rating: 3, title: "Average book", review_text: "I though it would be better", user_id: @user_1.id)
         @review_6 = @book_2.reviews.create(rating: 1, title: "Super Boring", review_text: "Do not waste your time reading this book", user_id: @user_1.id)
         @review_7 = @book_2.reviews.create(rating: 2, title: "Not what I expected", review_text: "Definitely not worth it", user_id: @user_3.id)
-        # Book_1 : 2.5, Book_2 : 1.5, Book_3 : 4, Book_4 : 5
+        # Book_1 : 2.5, Book_2 : 1.5, Book_3 : 4.5, Book_4 : 5
         # User_1 : 3, User_2 : 1, User_3 : 2, User_4 : 1
       end
 
       it '.top_books' do
-        expect(Book.top_books).to eq([@book_5, @book_4, @book_1])
+        expect(Book.top_books).to eq([@book_4, @book_3, @book_1])
       end
 
       it '.worst_books' do
-        expect(Book.worst_books).to eq([@book_2, @book_1, @book_4])
+        expect(Book.worst_books).to eq([@book_2, @book_1, @book_3])
       end
 
     end
