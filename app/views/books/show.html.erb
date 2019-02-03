@@ -3,22 +3,22 @@
     <li id="best-reviews">Top 3 Reviews: <% @top_reviews.each do |review| %>
       <p><%= review.title %></p>
       <p>Rating: <%= review.rating %></p>
-      <p><%= review.user.name %></p>
+      <p><%=link_to review.user.name, user_path(review.user) %></p>
     <% end %>
     </li>
     <li id="worst-reviews">Bottom 3 Reviews: <% @bottom_reviews.each do |review| %>
       <p><%= review.title %></p>
       <p>Rating: <%= review.rating %></p>
-      <p><%= review.user.name %></p>
+      <p><%= link_to review.user.name, user_path(review.user) %></p>
     <% end %>
     </li>
     <li id="average-rating">Average Rating: <%= @average_rating %></li>
   </ul>
 </section>
 
-<h2><%= @book.title %></h2>
+<h2><%= link_to @book.title, book_path(@book) %></h2>
 <% @book.authors.each do |author| %>
-  <h4><%= author.name %></h4>
+  <h4><%= link_to author.name, author_path(author) %></h4>
 <% end %>
 <p>Pages: <%= @book.page_count %></p>
 <p>Year: <%= @book.year %></p>

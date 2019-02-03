@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :books do
-    resources :reviews, only: [:new, :create]
+    resources :reviews, shallow: true
   end
   resources :authors
   resources :welcome, only: [:index]

@@ -1,5 +1,6 @@
 
 <h3> <%= @user.name %>'s reviews:</h3>
+
 <ul class="sort-reviews">
   <li><p> <%= link_to("Sort by newest review", user_path({sort: 'id', order: 'asc'})) %> </p></li>
   <li><p> <%= link_to("Sort by oldest review", user_path({sort: 'id', order: 'desc'})) %> </p></li>
@@ -7,15 +8,14 @@
 
 <section class="reviews-wrapper">
   <h4><% @reviews.each do |review| %></h4>
-    <ul class="reviews" id="review-<%= review.id %>">
-      <li>
-        <h5><%= review.title %></h5>
-        <p>Review: <%= review.review_text %></p>
-        <p>Rating: <%= review.rating %></p>
-        <p>Book: <%= review.book.title %></p>
-        <img src="<%= review.book.cover_image %>">
-        <p>Review written on the: <%= review.created_at %></p>
-      </li>
-    </ul>
+    <section class="reviews" id="review-<%= review.id %>">
+      <h5><%= review.title %></h5>
+      <p>Review: <%= review.review_text %></p>
+      <p>Rating: <%= review.rating %></p>
+      <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
+      <img src="<%= review.book.cover_image %>">
+      <p>Review written on the: <%= review.created_at %></p>
+      <%= button_to "Delete", review_path(review), method: :delete %>
+    </section>
   <% end %>
 </section>
