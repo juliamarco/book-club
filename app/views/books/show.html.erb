@@ -27,7 +27,7 @@
   <ul>
     <li>
       <h3><%= review.title %></h3>
-      <p>User: <%= review.user.name %></p>
+      <p id="user_link">User: <%= link_to("#{review.user.name}", user_path(review.user)) %></p>
       <p>Rating: <%= review.rating %></p>
       <p>Review: <%= review.review_text %></p>
     </li>

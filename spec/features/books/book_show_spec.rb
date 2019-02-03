@@ -77,7 +77,22 @@ describe 'when I visit /books/:id' do
       expect(page).to_not have_content(user_2.name)
 
       end
-
     end
+
+    it 'has username as links that take you to their show page' do
+      user_1 = User.create(name: "ilovereading")
+      review_1 = @book_1.reviews.create(rating: 2, title: "Not the best", review_text: "It was an average book", user: user_1)
+
+      visit book_path(@book_1)
+
+      within "#user_link" do
+
+      expect(page).to have_link "#{user_1.name}"
+      click_link "#{user_1.name}"
+
+      expect(current_path).to eq(user_path(user_1))
+      end
+    end
+
   end
 end
