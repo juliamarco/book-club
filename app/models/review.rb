@@ -23,4 +23,11 @@ class Review < ApplicationRecord
     average(:rating).to_f.round(1)
   end
 
+  def self.by_id(order)
+    case order
+    when 'desc' then order(id: :desc)
+    else order(id: :asc)
+    end
+  end
+
 end
