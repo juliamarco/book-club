@@ -7,6 +7,9 @@ class BooksController < ApplicationController
       when 'rating' then @books = Book.by_rating(params[:order])
       else @books = Book.all
     end
+    @top_books = Book.top_books
+    @worst_books = Book.worst_books
+    @top_reviewers = User.top_reviewers(3)
   end
 
   def show

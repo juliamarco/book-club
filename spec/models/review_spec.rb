@@ -42,7 +42,7 @@ RSpec.describe Review do
       end
 
     it '.top_reviews' do
-        expect(Review.top_reviews).to eq [@review_4, @review_3, @review_2]
+      expect(Review.top_reviews).to eq [@review_4, @review_3, @review_2]
     end
 
     it '.bottom_reviews' do

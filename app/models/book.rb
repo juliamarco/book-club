@@ -29,8 +29,8 @@ class Book < ApplicationRecord
 
   def self.by_year(order)
     case order
-      when 'desc' then order(page_count: :desc)
-      else order(page_count: :asc)
+    when 'desc' then order(year: :desc)
+    else order(year: :asc)
     end
   end
 
@@ -44,10 +44,23 @@ class Book < ApplicationRecord
     .left_outer_joins(:reviews)
     .group(:id)
     .order("average_rating #{order_sym}")
+    .order(:id)
+  end
+
+  def self.top_books
+    by_rating("desc").limit(3)
+  end
+
+  def self.worst_books
+    by_rating('asc').limit(3)
   end
 
   def average_rating
-    reviews.average(:rating)
+    reviews.average(:rating).to_f
+  end
+
+  def review_count
+    reviews.count
   end
 
 end
