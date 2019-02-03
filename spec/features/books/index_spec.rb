@@ -12,6 +12,13 @@ describe 'when I visit /books' do
     end
 
     it 'displays all book titles in the database' do
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  rating: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: @book_1,
+                  user: tim
+                )
       visit books_path
 
       within "#book-#{@book_1.id}" do
@@ -20,6 +27,7 @@ describe 'when I visit /books' do
         expect(page).to have_content("Pages: #{@book_1.page_count}")
         expect(page).to have_content("Year: #{@book_1.year}")
         expect(page).to have_content("#{@stephen_king.name}")
+        expect(page).to have_content("Average Rating: 2")
 
         expect(page).to_not have_content("Year: #{@book_2.year}")
         expect(page).to_not have_content("Pages: #{@book_2.page_count}")
