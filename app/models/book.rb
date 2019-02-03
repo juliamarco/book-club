@@ -63,4 +63,8 @@ class Book < ApplicationRecord
     reviews.count
   end
 
+  def top_review
+    reviews.order(rating: :desc).first
+  end
+
 end
