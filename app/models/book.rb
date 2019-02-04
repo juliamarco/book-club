@@ -57,7 +57,7 @@ class Book < ApplicationRecord
   end
 
   def average_rating
-    reviews.average(:rating).to_f
+    reviews.average(:rating).to_f.round(1)
   end
 
   def review_count
