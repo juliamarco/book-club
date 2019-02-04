@@ -16,6 +16,8 @@
   </ul>
 </section>
 
+<img src="<%= @book.cover_image %>" alt="<%= @book.title %> Cover Image">
+
 
 <h2><%= link_to @book.title, book_path(@book) %></h2>
 <% @book.authors.each do |author| %>
