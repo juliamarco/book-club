@@ -1,6 +1,6 @@
-<% if @book.errors %>
+<% if @review.errors %>
 <ul id="errors">
-  <% @book.errors.full_messages.each do |message| %>
+  <% @review.errors.full_messages.each do |message| %>
   <li><%= message %></li>
   <% end %>
 </ul>
