@@ -12,7 +12,7 @@
     <p>Year: <%= book.year %></p>
     <p>Page Count: <%= book.page_count %></p>
     <section class="top-review" id="top-review">
-      <% top_review = book.top_review %>
+      <% top_review = book.top_reviews(1) %>
       <% if top_review != nil %>
         <h4>Top Review:</h4>
         <h5><%= top_review.title %></h5>
