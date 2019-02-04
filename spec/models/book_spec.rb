@@ -124,8 +124,8 @@ RSpec.describe Book do
       expect(@book_1.review_count).to eq(2)
     end
 
-    it '.top_review' do
-      expect(@book_1.top_review).to eq(@review_2)
+    it '.top_reviews' do
+      expect(@book_1.top_reviews(1)).to eq([@review_2])
     end
   end
 end
