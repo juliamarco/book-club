@@ -35,6 +35,7 @@
     <li><%= link_to 'Sort by Rating (Descending)', books_path({sort: 'rating', order: 'desc'}) %></li>
   </ul>
 </section>
+<%= button_to "Add a book", new_book_path, method: :get %>
 <section class="book-wrapper">
 <% @books.each do |book| %>
   <section class="books-index" id="book-<%= book.id %>">
