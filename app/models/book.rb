@@ -15,6 +15,7 @@ class Book < ApplicationRecord
   }
 
   validates :title, presence: true, length: {minimum: 1}
+  validates :cover_image, presence: true, length: {minimum: 1}
 
   has_many :book_authors, dependent: :destroy
   has_many :reviews, dependent: :delete_all

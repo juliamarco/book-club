@@ -46,6 +46,8 @@ class BooksController < ApplicationController
   private
 
   def book_params
+    params[:book][:title] = params[:book][:title].titleize
+    params[:book][:cover_image] = "https://www.khadims.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/placeholder/default/big-no-image-found.jpg" unless params[:book][:cover_image] != ""
     params.require(:book).permit(:title, :page_count, :year, :cover_image, author_ids: [])
   end
 
