@@ -53,6 +53,7 @@ describe 'When I visit /authors/:id' do
       expect(page).to_not have_css("#book-#{@book_1.id}")
       expect(page).to have_content(@stephen_king.name)
       expect(page).to have_content(@book_2.title)
+      expect(page).to_not have_content(@herman_melville.name)
     end
   end
 end
