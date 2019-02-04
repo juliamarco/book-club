@@ -15,9 +15,9 @@ class BooksController < ApplicationController
   def show
     @book = Book.find(params[:id])
     # binding.pry
-    @top_reviews = Review.top_reviews
-    @bottom_reviews = Review.bottom_reviews
-    @average_rating = Review.average_rating
+    @top_reviews = @book.top_reviews(3)
+    @bottom_reviews = @book.bottom_reviews(3)
+    @average_rating = @book.average_rating
   end
 
   def new
