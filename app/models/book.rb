@@ -17,7 +17,7 @@ class Book < ApplicationRecord
   validates :title, presence: true, length: {minimum: 1}
 
   has_many :book_authors, dependent: :destroy
-  has_many :reviews, dependent: :destroy
+  has_many :reviews, dependent: :delete_all
   has_many :authors, through: :book_authors
 
   def self.by_page_count(order)

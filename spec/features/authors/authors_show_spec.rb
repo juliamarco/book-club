@@ -42,5 +42,17 @@ describe 'When I visit /authors/:id' do
       expect(page).to have_content("Page Count: #{@book_2.page_count}")
       expect(page).to have_content("Book has no reviews")
     end
+
+    it 'has a link to delete the author' do
+      visit author_path(@herman_melville)
+
+      click_button("Delete Author")
+
+      expect(current_path).to eq(books_path)
+
+      expect(page).to_not have_css("#book-#{@book_1.id}")
+      expect(page).to have_content(@stephen_king.name)
+      expect(page).to have_content(@book_2.title)
+    end
   end
 end
