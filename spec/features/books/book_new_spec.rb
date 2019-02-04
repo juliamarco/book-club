@@ -18,7 +18,7 @@ describe 'when I visit /books/new' do
 
       click_button "Add Book"
 
-      expect(page).to have_content("IT")
+      expect(page).to have_content("It")
       expect(page).to have_content("#{author_1_name}\n#{author_2_name}")
       expect(page).to have_content("Year: 1999")
       expect(page).to have_content("Pages: 200")
