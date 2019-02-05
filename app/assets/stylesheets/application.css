@@ -199,7 +199,7 @@ nav a:hover {
 
   .author-show-book {
    display: flex;
-   padding: 0 25px;
+   padding: 0 10px;
    vertical-align: top;
    margin: 0 10px;
    margin-bottom: 40px;
@@ -209,19 +209,20 @@ nav a:hover {
 
 
  .author-show-name {
-   margin: 25px;
+   margin-left: 25px;
    background: #274060;
    color: white;
    display: block;
-   padding: 0 25px;
+   /* padding: 0 25px; */
    float: center;
  }
 
  .author-show-name h1 {
   float: center;
   height: 50px;
+  width: 90%;
   display: block;
-  padding: 17px 10px;
+  padding: 20px;
  }
 
  .author-show-book {
@@ -235,16 +236,15 @@ nav a:hover {
  }
 
  .author-show-book img {
-   width: 32%;
-   height: 90%;
+   width: 30%;
+   height: 80%;
  }
-
 
 
 .book-info {
   display: block;
   background-color: #6D9F71;
-  padding: 3px;
+  padding: 2px;
   margin-left: 20px;
   text-align: center;
   margin-bottom: 10px
