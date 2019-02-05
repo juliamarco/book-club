@@ -14,7 +14,7 @@
     </section>
 
   <h4 id="reviews-start">Reviews: <% @book.reviews.each do |review| %></h4>
-    <section class="reviews-book-show" id="reviews-<%= @book.id %>">
+    <section class="reviews-book-show" id="reviews-<%= review.id %>">
     <ul>
       <li>
         <h3><%= review.title %></h3>
