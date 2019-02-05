@@ -1,21 +1,26 @@
-
-<h3> <%= @user.name %>'s reviews:</h3>
+<header class="user-show-name">
+  <h2> <%= @user.name %></h2>
+</header>
 
 <ul class="sort-reviews">
   <li><p> <%= link_to("Sort by newest review", user_path({sort: 'id', order: 'asc'})) %> </p></li>
   <li><p> <%= link_to("Sort by oldest review", user_path({sort: 'id', order: 'desc'})) %> </p></li>
 </ul>
 
-<section class="reviews-wrapper">
   <h4><% @reviews.each do |review| %></h4>
     <section class="reviews" id="review-<%= review.id %>">
-      <h5><%= review.title %></h5>
-      <p>Review: <%= review.review_text %></p>
-      <p>Rating: <%= review.rating %></p>
-      <p>Book: <%= link_to review.book.title, book_path(review.book) %></p>
       <img src="<%= review.book.cover_image %>">
-      <p>Review written on the: <%= review.created_at %></p>
-      <%= button_to "Delete", review_path(review), method: :delete %>
+        <section class="reviews-wrapper">
+          <section class="reviews-info">
+            <h2 class="review-title"> <%= @user.name %>'s review: <%= review.title %></h2>
+            <h2 class="book-title"><%= link_to review.book.title, book_path(review.book) %></h2>
+            <p>"<%= review.review_text %>"</p>
+            <p class="rating">Rating: <%= review.rating %></p>
+            <p>Review written on the: <%= review.created_at %></p>
+          <section class="button-delete">
+            <%= link_to "Delete", review_path(review), method: :delete %>
+          </section>
+        </section>
+      </section>
     </section>
   <% end %>
-</section>
