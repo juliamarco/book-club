@@ -52,7 +52,7 @@ describe 'when I visit /books/:id' do
 
       visit book_path(@book_1)
 
-      within "#statistics" do
+      within "#reviews-start" do
 
       expect(page).to_not have_content(@user_7.name)
       expect(page).to_not have_content(@review_5.title)
@@ -83,7 +83,7 @@ describe 'when I visit /books/:id' do
     it 'has username as links that take you to their show page' do
       visit book_path(@book_1)
 
-      within "#reviews-#{@book_1.id}" do
+      within "#reviews-#{@review_1.id}" do
         expect(page).to have_link "#{@user_1.name}"
         click_link "#{@user_1.name}"
       end
@@ -94,7 +94,7 @@ describe 'when I visit /books/:id' do
     it 'has a link to delete the book' do
       visit book_path(@book_1)
 
-      click_button("Delete Book")
+      click_link("Delete Book")
 
       expect(current_path).to eq(books_path)
       expect(page).to_not have_css("#book-#{@book_1.id}")
