@@ -20,7 +20,7 @@
    left: 15%;
    background-color: #E8DDB5;
    overflow-y: auto;
-   font-family: 'Amiri', sans-serif;
+   font-family: 'Amiri', serif;
  }
 
  nav {
@@ -68,3 +68,108 @@
  nav a:hover {
    color: #E8DDB5;
  }
+
+ .author-show-name {
+   margin: 25px;
+   background: #274060;
+   color: white;
+   display: block;
+   padding: 0 25px;
+   float: center;
+ }
+
+ .author-show-name h1 {
+  float: center;
+  height: 50px;
+  display: block;
+  padding: 17px 10px;
+ }
+
+ .author-show-book {
+   display: flex;
+   padding: 0 25px;
+   vertical-align: top;
+   margin: 0 10px;
+   margin-bottom: 40px;
+   flex-flow: row wrap;
+   width: 100%;
+ }
+
+ .author-show-book img {
+   width: 32%;
+   height: 90%;
+ }
+
+
+.book-info {
+  display: block;
+  background-color: #6D9F71;
+  padding: 3px;
+  margin-left: 20px;
+  text-align: center;
+  margin-bottom: 10px
+}
+
+.info-wrapper {
+  height: 90%;
+  width: 60%;
+}
+
+.book-title {
+  font-size: 30px;
+  color: black
+}
+
+.book-title a {
+  text-decoration: none;
+  color: black;
+}
+
+.book-title :hover {
+  color: white;
+  cursor: pointer;
+}
+
+.book-info ul {
+  list-style-type: none;
+  font-size: 20px;
+  text-align: left;
+}
+
+.top-review {
+  display: block;
+  height: 45%;
+  background-color: #878E88;
+  color: black;
+  margin-left: 20px;
+  padding-top: 5px;
+  padding-left: 30px;
+  text-align: left;
+}
+
+.top-review h4{
+  font-size: 20px;
+}
+
+.top-review a {
+  text-decoration: none;
+  color: black;
+}
+
+#username :hover {
+  color: white;
+  cursor: pointer;
+}
+
+.button a {
+  text-decoration: none;
+  color: white;
+}
+
+.button {
+  margin: 25px;
+  background: #274060;
+  display: inline-block;
+  padding: 0 25px;
+  float: center;
+}

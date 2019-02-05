@@ -1,27 +1,36 @@
-<h2><%= @author.name %></h2>
+<header class="author-show-name">
+  <h1 ><%= @author.name %></h1>
+</header>
+
 <% @author.books.each do |book| %>
-  <section class="author-show-book" id="book-<%= book.id %>">
+<section class="author-show-book" id="book-<%= book.id %>">
     <img src="<%= book.cover_image %>"  alt="<%= book.title %> Cover">
-    <h4><%= link_to book.title, book_path(book) %></h4>
-    <% if book.authors.count > 1 %>
-    <p>Co-authored by: </p>
-      <% book.authors.each do |author| %>
-        <h4><%= link_to author.name, author_path(author) unless author.name == @author.name %></h4>
-      <% end %>
-    <% end %>
-    <p>Year: <%= book.year %></p>
-    <p>Page Count: <%= book.page_count %></p>
-    <section class="top-review" id="top-review">
-      <% top_review = book.top_reviews(1)[0] %>
-      <% if top_review != nil %>
-        <h4>Top Review:</h4>
-        <h5><%= top_review.title %></h5>
-        <p><%= link_to top_review.user.name, user_path(top_review.user) %></p>
-        <p><%= top_review.review_text %></p>
-      <% else %>
-        <h5>Book has no reviews</h5>
-      <% end %>
+    <section class="info-wrapper">
+      <section class="book-info">
+        <h2 class="book-title"><%= link_to book.title, book_path(book) %> </h2>
+        <% if book.authors.count > 1 %>
+        <p>Co-authored by: </p>
+          <% book.authors.each do |author| %>
+            <h2><%= link_to author.name, author_path(author) unless author.name == @author.name %></h4>
+          <% end %>
+        <% end %>
+        <ul>
+          <li><p>Year: <%= book.year %></p></li>
+          <li><p>Page Count: <%= book.page_count %></p></li>
+        </ul>
+      </section>
+      <section class="top-review" id="top-review">
+        <% top_review = book.top_reviews(1)[0] %>
+        <% if top_review != nil %>
+          <h4>Top Review:  <%= top_review.title %></h4>
+          <p>"<%= top_review.review_text %>"</p>
+          <p id="username"><%= link_to top_review.user.name, user_path(top_review.user) %></p>
+        <% else %>
+          <h5>Book has no reviews</h5>
+        <% end %>
+      </section>
     </section>
   </section>
 <% end %>
-<%= button_to "Delete Author", author_path(@author), method: :delete %>
+
+<footer class="button"><%= link_to "Delete Author", author_path(@author), method: :delete %></footer>
