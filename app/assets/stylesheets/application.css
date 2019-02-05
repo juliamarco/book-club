@@ -23,6 +23,11 @@ p {
   font-size: .95em;
 }
 
+label {
+  display: inline-block;
+  width: 25%;
+}
+
 nav p {
   text-align: center;
 }
@@ -279,4 +284,12 @@ nav a:hover {
   display: inline-block;
   padding: 0 25px;
   float: center;
+}
+
+#new-book-form-wrapper {
+  display: flex;
+  height: 100vh;
+  vertical-align: center;
+  justify-content: center;
+  align-items: center;
 }
