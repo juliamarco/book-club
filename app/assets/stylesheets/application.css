@@ -207,13 +207,41 @@ nav a:hover {
    width: 100%;
  }
 
-  .author-show-book img {
+
+ .author-show-name {
+   margin: 25px;
+   background: #274060;
+   color: white;
+   display: block;
+   padding: 0 25px;
+   float: center;
+ }
+
+ .author-show-name h1 {
+  float: center;
+  height: 50px;
+  display: block;
+  padding: 17px 10px;
+ }
+
+ .author-show-book {
+   display: flex;
+   padding: 0 25px;
+   vertical-align: top;
+   margin: 0 10px;
+   margin-bottom: 40px;
+   flex-flow: row wrap;
+   width: 100%;
+ }
+
+ .author-show-book img {
    width: 32%;
    height: 90%;
  }
 
 
- .book-info {
+
+.book-info {
   display: block;
   background-color: #6D9F71;
   padding: 3px;
@@ -222,33 +250,35 @@ nav a:hover {
   margin-bottom: 10px
 }
 
- .info-wrapper {
+.info-wrapper {
   height: 90%;
   width: 60%;
 }
 
- .book-title {
+.book-title {
   font-size: 30px;
   color: black
 }
 
- .book-title a {
+.book-title a {
+
   text-decoration: none;
   color: black;
 }
 
- .book-title :hover {
+.book-title :hover {
   color: white;
   cursor: pointer;
 }
 
- .book-info ul {
+.book-info ul {
+
   list-style-type: none;
   font-size: 20px;
   text-align: left;
 }
 
- .top-review {
+.top-review {
   display: block;
   height: 45%;
   background-color: #878E88;
@@ -259,26 +289,22 @@ nav a:hover {
   text-align: left;
 }
 
- .top-review h4{
-  font-size: 20px;
-}
-
- .top-review a {
+.top-review a {
   text-decoration: none;
   color: black;
 }
 
- #username :hover {
+#username :hover {
   color: white;
   cursor: pointer;
 }
 
- .button a {
+.button a {
   text-decoration: none;
   color: white;
 }
 
- .button {
+.button {
   margin: 25px;
   background: #274060;
   display: inline-block;
