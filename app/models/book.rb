@@ -14,7 +14,7 @@ class Book < ApplicationRecord
     only_integer: true
   }
 
-  validates :title, presence: true, length: {minimum: 1}
+  validates :title, presence: true, uniqueness: true, length: {minimum: 1}
   validates :cover_image, presence: true, length: {minimum: 1}
 
   has_many :book_authors, dependent: :destroy

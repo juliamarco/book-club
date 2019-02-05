@@ -12,7 +12,7 @@
   <%= f.text_field :title, placeholder: "e.g: #isPeterOkay?" %><br>
 
   <%= f.label :year %>
-  <%= f.number_field :year, placeholder: "e.g: 2019" %><br>
+  <%= f.number_field :year, placeholder: "e.g: 2019", min: 0, max: 2019 %><br>
 
   <%= f.label :authors %>
   <%= f.text_field :authors, value: "", placeholder: "Scott Thomas, Ian Douglas, ..." %><br>

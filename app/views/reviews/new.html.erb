@@ -8,16 +8,16 @@
 <section id="new-form-wrapper">
   <%= form_for [@book, @review] do |f|%>
     <%= f.label :title %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, placeholder: "e.g: Great Book" %>
 
     <%= f.label :user %>
-    <%= f.text_field :user %>
+    <%= f.text_field :user, placeholder: "e.g: Scooty_scott" %>
 
     <%= f.label :rating %>
-    <%= f.number_field :rating %><br/>
+    <%= f.number_field :rating, min: 1, max: 5, placeholder: "4"%><br/>
 
     <%= f.label :review_text %>
-    <%= f.text_field :review_text %>
+    <%= f.text_area :review_text, placeholder: "What a read! Couldn't put it down." %>
 
     <%= f.submit "Add Review", id: "new-review-button"%>
   <% end %>
