@@ -1,53 +1,56 @@
+<section class="book-sort-bar">
+  <ul>
+    <li><%= link_to 'Sort by Page Count (Ascending)', books_path({sort: 'page_count', order: 'asc'}) %></li>
+    <li><%= link_to 'Sort by Review Count (Ascending)', books_path({sort: 'review_count', order: 'asc'}) %></li>
+    <li><%= link_to 'Sort by Rating (Ascending)', books_path({sort: 'rating', order: 'asc'}) %></li>
+    <li><%= link_to 'Sort by Page Count (Descending)', books_path({sort: 'page_count', order: 'desc'}) %></li>
+    <li><%= link_to 'Sort by Review Count (Descending)', books_path({sort: 'review_count', order: 'desc'}) %></li>
+    <li><%= link_to 'Sort by Rating (Descending)', books_path({sort: 'rating', order: 'desc'}) %></li>
+  </ul>
+</section>
 <section class="statistics">
-  <section id="worst-books">
+  <section class="statistics-item" id="worst-books">
     <h2>Worst Books:</h2>
     <ul>
       <% @worst_books.each do |book| %>
-        <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %> </li>
+      <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %> </li>
       <% end %>
     </ul>
   </section>
-  <section id="top-books">
+  <section class="statistics-item" id="top-books">
     <h2>Top Books:</h2>
     <ul>
       <% @top_books.each do |book| %>
-        <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %></li>
+      <li><%= link_to book.title, book_path(book) %> Score: <%= book.average_rating %></li>
       <% end %>
     </ul>
   </section>
-  <section id="top-reviewers">
+  <section class="statistics-item" id="top-reviewers">
     <h2>Top Reviewers:</h2>
     <ul>
       <% @top_reviewers.each do |reviewer| %>
-        <li><%= link_to reviewer.name, user_path(reviewer) %> Reviews: <%= reviewer.review_count %></li>
+      <li><%= link_to reviewer.name, user_path(reviewer) %> Reviews: <%= reviewer.review_count %></li>
       <% end %>
     </ul>
   </section>
 </section>
 
-<section class="book-sort-bar">
-  <ul>
-    <li><%= link_to 'Sort by Page Count (Ascending)', books_path({sort: 'page_count', order: 'asc'}) %></li>
-    <li><%= link_to 'Sort by Page Count (Descending)', books_path({sort: 'page_count', order: 'desc'}) %></li>
-    <li><%= link_to 'Sort by Year (Ascending)', books_path({sort: 'year', order: 'asc'}) %></li>
-    <li><%= link_to 'Sort by Year (Descending)', books_path({sort: 'year', order: 'desc'}) %></li>
-    <li><%= link_to 'Sort by Rating (Ascending)', books_path({sort: 'rating', order: 'asc'}) %></li>
-    <li><%= link_to 'Sort by Rating (Descending)', books_path({sort: 'rating', order: 'desc'}) %></li>
-  </ul>
-</section>
-<%= button_to "Add a book", new_book_path, method: :get %>
 <section class="book-wrapper">
 <% @books.each do |book| %>
   <section class="books-index" id="book-<%= book.id %>">
-    <img src="<%= book.cover_image %>" alt="<%= book.title %> Cover Image">
-    <h3><%= link_to book.title, book_path(book)%></h3>
+    <section class="book-information">
+      <h3><%= link_to book.title, book_path(book)%></h3>
       <% book.authors.each do |author| %>
-        <h5><%=link_to author.name, author_path(author) %></h5>
+      <h5><%=link_to author.name, author_path(author) %></h5>
       <% end %>
       <p>Pages: <%= book.page_count %></p>
       <p>Year: <%= book.year %></p>
+    </section>
+    <img src="<%= book.cover_image %>" alt="<%= book.title %> Cover Image">
+    <section class='book-review-information'>
       <p>Average Rating: <%= book.average_rating %></p>
       <p>Number of Reviews: <%= book.review_count %></p>
+    </section>
   </section>
 <% end %>
 </section>

@@ -6,6 +6,7 @@
 </ul>
 <% end %>
 
+<section id="new-book-form-wrapper">
 <%= form_for @book do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, placeholder: "e.g: #isPeterOkay?" %><br>
@@ -24,3 +25,4 @@
 
   <%= f.submit "Add Book" %>
 <% end %>
+</section>

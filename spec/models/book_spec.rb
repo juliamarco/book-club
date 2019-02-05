@@ -48,6 +48,26 @@ RSpec.describe Book do
       expect(Book.by_year('desc')).to eq [@book_3, @book_1, @book_4, @book_2]
     end
 
+    it '.by_review_count' do
+      tim = User.create(name: "Tim")
+      review_1 = Review.create(title: "Total ripoff",
+                  rating: 2,
+                  review_text: "Worst thing ive read this afternoon",
+                  book: @book_1,
+                  user: tim
+                )
+
+      review_2 = Review.create(title: "Amazing",
+                  rating: 4,
+                  review_text: "I take it all back, the clown is pure evil.",
+                  book: @book_1,
+                  user: tim
+                )
+
+      expect(Book.by_review_count("asc")).to eq([@book_2, @book_3, @book_4, @book_1])
+      expect(Book.by_review_count("desc")).to eq([@book_1, @book_2, @book_3, @book_4])
+    end
+
     it '.by_rating' do
       tim = User.create(name: "Tim")
       review_1 = Review.create(title: "Total ripoff",
