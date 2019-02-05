@@ -6,13 +6,13 @@
 </ul>
 <% end %>
 
-<section id="new-book-form-wrapper">
+<section id="new-form-wrapper">
 <%= form_for @book do |f| %>
   <%= f.label :title %>
   <%= f.text_field :title, placeholder: "e.g: #isPeterOkay?" %><br>
 
   <%= f.label :year %>
-  <%= f.number_field :year, placeholder: "e.g: 2019" %><br>
+  <%= f.number_field :year, placeholder: "e.g: 2019", min: 0, max: 2019 %><br>
 
   <%= f.label :authors %>
   <%= f.text_field :authors, value: "", placeholder: "Scott Thomas, Ian Douglas, ..." %><br>
@@ -23,6 +23,6 @@
   <%= f.label :cover_image %>
   <%= f.text_field :cover_image, value: "", placeholder: "e.g: 1811.com/peter.png" %><br>
 
-  <%= f.submit "Add Book" %>
+  <%= f.submit "Add Book", id: "new-book-button" %>
 <% end %>
 </section>

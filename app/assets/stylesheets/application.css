@@ -23,9 +23,27 @@ p {
   font-size: .95em;
 }
 
+form {
+  width: 50%;
+}
+
 label {
   display: inline-block;
-  width: 25%;
+  width: 23%;
+  text-align: right;
+  font-size: 1.1em;
+  margin-right: .2em;
+}
+
+input {
+  width: 70%;
+  height: 2em;
+}
+
+form textarea {
+  width: 70%;
+  height: 5em;
+  resize: none;
 }
 
 nav p {
@@ -61,6 +79,12 @@ nav a:hover {
   color: white;
 }
 
+.project-title {
+  font-size: 40px;
+  margin-left: 20px;
+  color: #274060;
+}
+
 .statistics {
   margin: 5%;
   margin-bottom: 1%;
@@ -84,6 +108,7 @@ nav a:hover {
   align-content: center;
   align-items: center;
   height: 8vh;
+  z-index: 1;
   background-color: #274060;
 }
 
@@ -109,8 +134,8 @@ nav a:hover {
   text-align: center;
   flex-direction: column;
   vertical-align: center;
-  background-color: #274060;
-  color: white;
+  background-color: #878E88;
+  color: black;
   height: 35vh;
   overflow-x: scroll;
 }
@@ -121,13 +146,131 @@ nav a:hover {
   background-color: #949FA8;
   height: 35vh;
   width: 30%;
+}
+
+.author-show-name {
+  margin: 25px;
+  background: #274060;
+  color: white;
+  display: block;
+  padding: 0 25px;
+  float: center;
+}
+
+.author-show-book {
+  display: flex;
+  padding: 0 25px;
+  vertical-align: top;
+  margin: 0 10px;
+  margin-bottom: 40px;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.author-show-name {
+  margin: 25px;
+  background: #274060;
+  color: white;
+  display: block;
+  padding: 0 25px;
+  float: center;
+}
+
+.author-show-book {
+  display: flex;
+  padding: 0 25px;
+  vertical-align: top;
+  margin: 0 10px;
+  margin-bottom: 40px;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.book-info {
+  display: block;
+  background-color: #6D9F71;
+  padding: 3px;
+  margin-left: 20px;
+  text-align: center;
+  margin-bottom: 10px
+}
+
+.info-wrapper {
+  height: 90%;
+  width: 60%;
+}
+
+.top-review {
+  display: block;
+  height: 45%;
+  background-color: #878E88;
+  color: black;
+  margin-left: 20px;
+  padding-top: 5px;
+  padding-left: 30px;
+  text-align: left;
+}
+
+.button_to {
+  width: 15%;
+}
+
+.book-title {
+  font-size: 30px;
+  color: black
+}
+
+.book-title :hover {
+  color: white;
+  cursor: pointer;
+}
+
+.button {
+  margin: 25px;
+  background: #274060;
+  display: inline-block;
+  padding: 0 25px;
+  float: center;
+}
+
+.developer-show-wrapper {
+  margin-top: 10%;
+  display: flex;
+  justify-content: space-evenly;
+  vertical-align: middle;
+}
+
+.developer-show-pane {
+  width: 50%;
+  text-align: center;
+}
+
+.developer-show-pane img {
+  width: 15vh;
+}
+
+.developer-show-pane h4 {
+  font-size: 1.7em;
+  color: #6D9F71
+}
+
+.statistics-item a {
+  text-decoration: none;
+  color: black;
+}
+
+.statistics-item a:hover {
   color: white;
 }
 
 .book-information a {
   text-decoration: none;
-  color: white;
+  color: black;
   overflow-y: auto;
+}
+
+.book-information a:hover {
+  color: white;
 }
 
 .statistics-item li {
@@ -181,16 +324,8 @@ nav a:hover {
   top: 50%;
   transform: translateY(-50%);
 }
-.author-show-name {
-   margin: 25px;
-   background: #274060;
-   color: white;
-   display: block;
-   padding: 0 25px;
-   float: center;
- }
 
-  .author-show-name h1 {
+.author-show-name h1 {
   float: center;
   height: 50px;
   display: block;
@@ -247,18 +382,12 @@ nav a:hover {
   margin-bottom: 10px
 }
 
-.info-wrapper {
+.author-show-book img {
+  width: 32%;
   height: 90%;
-  width: 60%;
-}
-
-.book-title {
-  font-size: 30px;
-  color: black
 }
 
 .book-title a {
-
   text-decoration: none;
   color: black;
 }
@@ -268,30 +397,17 @@ nav a:hover {
 }
 
 .book-info ul {
-
   list-style-type: none;
   font-size: 20px;
   text-align: left;
 }
+
 
 .top-review {
   display: block;
   height: 45%;
   background-color: #949FA8;
   color: black;
-  margin-left: 20px;
-  padding-top: 5px;
-  padding-left: 30px;
-  text-align: left;
-}
-
-.top-review a {
-  text-decoration: none;
-  color: black;
-}
-
-#username :hover {
-  color: white;
 }
 
 .button a {
@@ -299,20 +415,51 @@ nav a:hover {
   color: white;
 }
 
-.button {
-  margin: 25px;
-  background: #274060;
-  display: inline-block;
-  padding: 0 25px;
-  float: center;
+#username :hover {
+  color: white;
 }
 
-#new-book-form-wrapper {
+#new-form-wrapper {
   display: flex;
-  height: 100vh;
-  vertical-align: center;
+  height: 50vh;
+  vertical-align: middle;
   justify-content: center;
   align-items: center;
+}
+
+#new-book-button {
+  width: 25%;
+  float: right;
+}
+
+#new-review-button {
+  width: 25%;
+  position: relative;
+  right: 5%;
+  float: right;
+}
+
+#completed-by {
+  font-size: 22px;
+  margin-left: 20px
+}
+
+#welcome-cta {
+  display: inline;
+  font-size: 1.3em;
+  margin-left: 20px;
+  text-decoration: none;
+  color: #274060;
+}
+
+#welcome-cta:hover {
+  color: #878E88;
+}
+
+#left-developer {
+  border-right-style: solid;
+  border-color: #6D9F71;
+  border-width: 6px;
 }
 
 .user-show-name {
