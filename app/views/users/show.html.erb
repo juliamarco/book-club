@@ -17,7 +17,7 @@
             <p>"<%= review.review_text %>"</p>
             <p class="rating">Rating: <%= review.rating %></p>
             <p>Review written on the: <%= review.created_at %></p>
-          <section class="button_delete">
+          <section class="button-delete">
             <%= link_to "Delete", review_path(review), method: :delete %>
           </section>
         </section>
