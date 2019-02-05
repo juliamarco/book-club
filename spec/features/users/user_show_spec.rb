@@ -34,7 +34,7 @@ describe 'when I visit /users/:id' do
       visit user_path(@user_1)
 
       within "#review-#{@review_1.id}" do
-        click_button("Delete")
+        click_link("Delete")
       end
 
       expect(current_path).to eq(user_path(@user_1))

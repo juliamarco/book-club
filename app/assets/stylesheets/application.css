@@ -207,13 +207,11 @@ nav a:hover {
    width: 100%;
  }
 
-
  .author-show-name {
    margin-left: 25px;
    background: #274060;
    color: white;
    display: block;
-   /* padding: 0 25px; */
    float: center;
  }
 
@@ -239,7 +237,6 @@ nav a:hover {
    width: 30%;
    height: 80%;
  }
-
 
 .book-info {
   display: block;
@@ -318,4 +315,99 @@ nav a:hover {
   vertical-align: center;
   justify-content: center;
   align-items: center;
+}
+
+.user-show-name {
+   margin: 25px;
+   background: #274060;
+   color: white;
+   display: block;
+   padding: 0 25px;
+   float: center;
+ }
+
+ .user-show-name h2 {
+ float: center;
+ height: 50px;
+ display: block;
+ padding: 17px 10px;
+}
+
+.sort-reviews {
+  background: #6D9F71;
+  margin: 25px;
+  padding: 0 25px;
+  list-style-type: none;
+  font-size: 20px;
+  text-align: left;
+}
+
+.sort-reviews a {
+  text-decoration: none;
+  color: black;
+}
+
+.sort-reviews :hover {
+  color: white;
+  cursor: pointer;
+}
+
+.reviews-wrapper {
+  height: 90%;
+  width: 60%;
+  margin-left: 20px
+}
+
+.reviews-wrapper {
+  height: 50%;
+  width: 60%;
+}
+
+.reviews {
+  display: flex;
+  padding: 0 25px;
+  vertical-align: top;
+  margin: 0 10px;
+  margin-bottom: 40px;
+  flex-flow: row wrap;
+  width: 100%;
+}
+
+.reviews img{
+  width: 30%;
+  height: 80%;
+}
+
+.reviews-info {
+  display: block;
+  background-color: #878E88;
+  padding: 2px;
+  margin-left: 9px;
+  text-align: center;
+  margin-bottom: 10px;
+  list-style-type: none;
+  font-size: 20px;
+}
+
+.review-title {
+  font-size: 25px;
+  color: #274060
+}
+
+.rating{
+  font-size: 20px;
+  color: #274060
+}
+
+.button_delete a {
+  text-decoration: none;
+  color: white;
+}
+
+.button_delete {
+  margin: 25px;
+  background: #274060;
+  display: inline-block;
+  padding: 0 25px;
+  float: center;
 }
