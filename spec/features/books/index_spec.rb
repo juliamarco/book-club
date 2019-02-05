@@ -91,22 +91,33 @@ describe 'when I visit /books' do
       expect(books[3].text).to have_content(@book_4.title)
     end
 
-    it 'can sort by year in ascending and descending order' do
+    it 'can sort by review count in ascending and descending order' do
+      user_1 = User.create(name: "ilovereading")
+      user_2 = User.create(name: "tomas_1999")
+      user_3 = User.create(name: "diego_marco")
+      user_4 = User.create(name: "joaquin_meteme")
+      review_1 = @book_2.reviews.create(rating: 2, title: "Not the best", review_text: "It was an average book", user_id: user_1.id)
+      review_2 = @book_3.reviews.create(rating: 4, title: "Loved it", review_text: "Enjoyed every single page of it!", user_id: user_2.id)
+      review_3 = @book_4.reviews.create(rating: 5, title: "Pretty awesome", review_text: "Interesting all the way until the end", user_id: user_3.id)
+      review_4 = @book_3.reviews.create(rating: 5, title: "Best book ever", review_text: "Could not stop reading it", user_id: user_4.id)
+      review_5 = @book_2.reviews.create(rating: 3, title: "Average book", review_text: "I though it would be better", user_id: user_1.id)
+      review_6 = @book_2.reviews.create(rating: 1, title: "Super Boring", review_text: "Do not waste your time reading this book", user_id: user_1.id)
+
       visit books_path
-      click_link("Sort by Year (Ascending)")
+      click_link("Sort by Review Count (Ascending)")
+      books = page.find_all('.books-index')
+      expect(books[0].text).to have_content(@book_1.title)
+      expect(books[1].text).to have_content(@book_4.title)
+      expect(books[2].text).to have_content(@book_3.title)
+      expect(books[3].text).to have_content(@book_2.title)
+
+      click_link("Sort by Review Count (Descending)")
+
       books = page.find_all('.books-index')
       expect(books[0].text).to have_content(@book_2.title)
       expect(books[1].text).to have_content(@book_3.title)
-      expect(books[2].text).to have_content(@book_1.title)
-      expect(books[3].text).to have_content(@book_4.title)
-
-      click_link("Sort by Year (Descending)")
-
-      books = page.find_all('.books-index')
-      expect(books[0].text).to have_content(@book_4.title)
-      expect(books[1].text).to have_content(@book_1.title)
-      expect(books[2].text).to have_content(@book_3.title)
-      expect(books[3].text).to have_content(@book_2.title)
+      expect(books[2].text).to have_content(@book_4.title)
+      expect(books[3].text).to have_content(@book_1.title)
     end
 
     it 'can sort by rating in ascending and descending order' do
