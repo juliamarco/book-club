@@ -48,6 +48,19 @@ class Book < ApplicationRecord
     .order(:id)
   end
 
+  def self.by_review_count(order)
+    case order
+      when 'desc' then order_sym = :desc
+      else order_sym = :asc
+    end
+
+    select("books.*, COUNT(reviews.id) as review_count")
+    .left_outer_joins(:reviews)
+    .group(:id)
+    .order("review_count #{order}")
+    .order(:id)
+  end
+
   def self.top_books
     by_rating("desc").limit(3)
   end
