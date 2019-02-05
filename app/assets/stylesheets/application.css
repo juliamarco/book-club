@@ -67,7 +67,7 @@ nav a:hover {
   margin-top: 2%;
   display: flex;
   justify-content: space-evenly;
-  background-color: #878E88;
+  background-color: #949FA8;
 }
 
 .statistics-item {
@@ -118,7 +118,7 @@ nav a:hover {
 .book-review-information {
   display: inline-block;
   text-align: center;
-  background-color: #878E88;
+  background-color: #949FA8;
   height: 35vh;
   width: 30%;
   color: white;
@@ -278,7 +278,7 @@ nav a:hover {
 .top-review {
   display: block;
   height: 45%;
-  background-color: #878E88;
+  background-color: #949FA8;
   color: black;
   margin-left: 20px;
   padding-top: 5px;
@@ -380,7 +380,7 @@ nav a:hover {
 
 .reviews-info {
   display: block;
-  background-color: #878E88;
+  background-color: #949FA8;
   padding: 2px;
   margin-left: 9px;
   text-align: center;
