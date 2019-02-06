@@ -1,17 +1,17 @@
 
-  <h2 class="book-show-title"><%= link_to @book.title, book_path(@book) %></h2>
-  <% @book.authors.each do |author| %>
-    <section class="book-show-information">
-      <img src="<%= @book.cover_image %>" alt="<%= @book.title %> Cover Image">
-        <section class="books-wrapper">
-          <section class="books-info">
-            <h2 class="author-name"><%= link_to author.name, author_path(author) %></h2>
-  <% end %>
-  <p class= "book-pages">Pages: <%= @book.page_count %></p>
-  <p class= "book-year">Year: <%= @book.year %></p>
-          </section>
-        </section>
+<h2 class="book-show-title"><%= link_to @book.title, book_path(@book) %></h2>
+<section class="book-show-information">
+  <img src="<%= @book.cover_image %>" alt="<%= @book.title %> Cover Image">
+  <section class="books-wrapper">
+    <section class="books-info">
+      <% @book.authors.each do |author| %>
+      <h2 class="author-name"><%= link_to author.name, author_path(author) %></h2>
+      <% end %>
+      <p class= "book-pages">Pages: <%= @book.page_count %></p>
+      <p class= "book-year">Year: <%= @book.year %></p>
     </section>
+  </section>
+</section>
 
   <h4 id="reviews-start">Reviews: <% @book.reviews.each do |review| %></h4>
     <section class="reviews-book-show" id="reviews-<%= review.id %>">
